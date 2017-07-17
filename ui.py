@@ -68,9 +68,9 @@ class VIEW3D_PT_CustomMenu(bpy.types.Panel):
         col = layout.column(align=True)
         
         col.label(text="何角形？:")
-        col.prop(scn, "polygonNum", icon="BLENDER", toggle=True)
+        col.prop(scn, "polygonNum")
         col.label(text="直線とみなす最大の角度:")
-        col.prop(scn, "angleThreshold", icon="BLENDER", toggle=True)
+        col.prop(scn, "angleThreshold")
         
         col.separator();
         
@@ -80,4 +80,4 @@ class VIEW3D_PT_CustomMenu(bpy.types.Panel):
         col.separator();
         
         col.label(text="結果の表示:")
-        col.prop(scn, "resultNum", icon="BLENDER", toggle=True)
+        col.prop(scn, "resultNum")
