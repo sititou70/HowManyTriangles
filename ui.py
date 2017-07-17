@@ -6,7 +6,11 @@ from . import functions
 
 result = None
 mesh = None
-    
+
+def printResult(self, context):
+    if len(result) > context.scene.resultNum - 1:
+        functions.printPath(result[context.scene.resultNum - 1])
+
 def initSceneProperties():
     bpy.types.Scene.polygonNum = IntProperty(
         name = "n", 
@@ -22,10 +26,6 @@ def initSceneProperties():
         min = 0,
         max = 180)
     
-    def printResult(self, context):
-        if len(result) > context.scene.resultNum - 1:
-            functions.printPath(result[context.scene.resultNum - 1])
-    
     bpy.types.Scene.resultNum = IntProperty(
         name = "No.", 
         description = "何番目の多角形を表示しますか？",
@@ -40,10 +40,14 @@ class calcButton(bpy.types.Operator):
     def execute(self, context):
         global result
         global mesh
+        
         mesh = bmesh.from_edit_mesh(bpy.context.object.data)
         angle_threshold = context.scene.angleThreshold / 180 * math.pi
         result = functions.getPolygons(mesh, context.scene.polygonNum, angle_threshold)
         self.report({"INFO"}, "%d個の%d角形が見つかりました" % (len(result), context.scene.polygonNum))
+        
+        context.scene.resultNum = 1
+        printResult(self, context)
         return{"FINISHED"}
 
 class VIEW3D_PT_CustomMenu(bpy.types.Panel):
