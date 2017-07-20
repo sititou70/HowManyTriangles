@@ -39,7 +39,7 @@ def calc_edges_angle(edge1, edge2):
         return 0
     
     common_vertex_set = list(set(edge1.verts) & set(edge2.verts))
-    if len(common_vertex_set) is not 1:
+    if len(common_vertex_set) != 1:
         raise ValueError("Both edge must share only one vertex!")
     
     common_vertex = common_vertex_set[0]

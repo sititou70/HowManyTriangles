@@ -4,7 +4,7 @@ from . import mesh_utils
 import time
 
 def is_equal_paths(path1, path2):
-    return len(set(path1) ^ set(path2)) is 0
+    return len(set(path1) ^ set(path2)) == 0
 
 def is_in_array_with_comp(it, array, comp):
     for item in array:
@@ -53,7 +53,7 @@ def turning_limited_dfs(data):
         return data
     
     if len(data["track"]) >= 3 and data["track"][-1] is data["track"][0]:
-        if calc_turning_num(data["track"], data["angle_threshold"]) is data["polygonNum"]:
+        if calc_turning_num(data["track"], data["angle_threshold"]) == data["polygonNum"]:
             data["paths"].append(data["track"][:])
         data["track"].pop()
         data["track"].pop()
