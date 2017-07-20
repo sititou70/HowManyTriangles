@@ -1,7 +1,7 @@
 import bpy
 import math
 
-def unselectMesh(bmesh):
+def unselect_mesh(bmesh):
     for ver in bmesh.verts:
         ver.select = False
     
@@ -14,7 +14,7 @@ def unselectMesh(bmesh):
     # trigger viewport update
     bpy.context.scene.objects.active = bpy.context.scene.objects.active
 
-def getNextVerts(vert):
+def get_next_verts(vert):
     next_verts = [];
     
     for edge in vert.link_edges:
@@ -24,7 +24,7 @@ def getNextVerts(vert):
     
     return next_verts
 
-def getEdgeFromVerts(vertex1, vertex2):
+def get_edge_from_verts(vertex1, vertex2):
     if vertex1 is vertex2:
         return None
     
@@ -34,7 +34,7 @@ def getEdgeFromVerts(vertex1, vertex2):
     
     return None
 
-def calcEdgesAngle(edge1, edge2):
+def calc_edges_angle(edge1, edge2):
     if edge1 is edge2:
         return 0
     

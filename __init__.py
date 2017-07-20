@@ -17,7 +17,7 @@ from . import ui
 
 def register():
     bpy.utils.register_module(__name__)
-    ui.initSceneProperties()
+    ui.init_scene_properties()
 
 def unregister():
     bpy.utils.unregister_module(__name__)
